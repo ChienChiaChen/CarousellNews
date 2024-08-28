@@ -39,6 +39,8 @@ android {
 
 dependencies {
 
+    implementation(project(":common"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -52,4 +54,6 @@ dependencies {
     implementation(libs.dagger.hilt.core)
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
+
+    implementation(libs.coil)
 }
