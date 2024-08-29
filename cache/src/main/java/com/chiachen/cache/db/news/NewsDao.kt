@@ -4,7 +4,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.chiachen.cache.model.NewsCacheModel
-import kotlinx.coroutines.flow.Flow
 
 interface NewsDao {
     @Query(
@@ -12,7 +11,7 @@ interface NewsDao {
         SELECT * FROM news 
         """
     )
-    fun getNews(): Flow<List<NewsCacheModel>>
+    fun getNews(): List<NewsCacheModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveNews(newsCacheModels: List<NewsCacheModel>)

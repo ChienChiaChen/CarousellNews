@@ -13,24 +13,22 @@ class DefaultPreferencesDataSource @Inject constructor(
 ) : PreferencesDataSource {
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
-    override fun needToRefresh():Boolean {
-        val oldTime = preferences.getLong(TIMESTAMP, 0L)
-        val currTime = System.currentTimeMillis()/1000
-        return if ((currTime - oldTime) > ONE_HOUR) {
-            preferences.edit {
-                putLong(TIMESTAMP, currTime)
-                apply()
-            }
-            true
-        } else {
-            false
+
+    override fun updateTimestamp() {
+        val currTime = System.currentTimeMillis() / 1000
+        preferences.edit {
+            putLong(TIMESTAMP, currTime)
+            apply()
         }
+    }
+
+    override fun getTimestamp(): Long {
+        return preferences.getLong(TIMESTAMP, 0L)
     }
 
     companion object {
         private const val PREFERENCES_NAME = "CAROUSELL_NEWS_PREFERENCES"
         private const val TIMESTAMP = "TIMESTAMPE"
-        private const val ONE_HOUR = 1000 * 60 * 60
     }
 
 
