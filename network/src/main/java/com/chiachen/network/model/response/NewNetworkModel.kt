@@ -5,16 +5,16 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class NewNetworkModel(
-    @field:Json(name ="banner_url")
+    @Json(name ="banner_url")
     val bannerUrl: String?,
-    @field:Json(name ="description")
+    @Json(name ="description")
     val description: String?,
-    @field:Json(name ="id")
+    @Json(name ="id")
     val id: String?,
-    @field:Json(name ="rank")
+    @Json(name ="rank")
     val rank: Int?,
-    @field:Json(name ="time_created")
+    @Json(name ="time_created")
     val timeCreated: Long?,
-    @field:Json(name ="title")
+    @Json(name ="title")
     val title: String?
 )

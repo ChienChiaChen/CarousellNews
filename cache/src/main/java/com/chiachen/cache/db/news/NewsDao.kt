@@ -1,10 +1,12 @@
 package com.chiachen.cache.db.news
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.chiachen.cache.model.NewsCacheModel
 
+@Dao
 interface NewsDao {
     @Query(
         """
@@ -14,5 +16,5 @@ interface NewsDao {
     fun getNews(): List<NewsCacheModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveNews(newsCacheModels: List<NewsCacheModel>)
+    fun saveNews(newsCacheModels: List<NewsCacheModel>)
 }

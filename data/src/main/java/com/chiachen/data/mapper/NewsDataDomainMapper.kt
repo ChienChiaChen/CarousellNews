@@ -8,6 +8,7 @@ import javax.inject.Inject
 class NewsDataDomainMapper @Inject constructor() : Mapper<NewDataModel, NewsDomainModel> {
     override fun from(i: NewDataModel): NewsDomainModel {
         return NewsDomainModel(
+            id = i.id,
             bannerUrl = i.bannerUrl,
             description = i.description,
             rank = i.rank,
@@ -18,9 +19,9 @@ class NewsDataDomainMapper @Inject constructor() : Mapper<NewDataModel, NewsDoma
 
     override fun to(o: NewsDomainModel): NewDataModel {
         return NewDataModel(
+            id = o.id,
             bannerUrl = o.bannerUrl,
             description = o.description,
-            id = 0.toString(),
             rank = o.rank,
             timeCreated = o.timeCreated,
             title = o.title,
