@@ -24,6 +24,10 @@ room = "2.4.2"
 lifecycle = "2.7.0"
 swiperefreshlayout = "1.1.0"
 
+coroutines = "1.5.1"
+mockk = "1.12.2"
+runner = "1.4.0"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -40,6 +44,7 @@ javax-inject = { module = "javax.inject:javax.inject", version.ref = "javax-inje
 dagger-hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "dagger" }
 dagger-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "dagger" }
 dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "dagger" }
+dagger-hilt-test = { module = "com.google.dagger:hilt-android-testing", version.ref = "dagger"}
 
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 
@@ -57,6 +62,11 @@ room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "
 lifecycle-scope = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 viewmodel-scope = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
+
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+mock-web-server = { group = "com.squareup.okhttp3",name = "mockwebserver", version.ref = "okhttp" }
+runner = { module = "androidx.test:runner", version.ref="runner"}
 
 
 [plugins]
