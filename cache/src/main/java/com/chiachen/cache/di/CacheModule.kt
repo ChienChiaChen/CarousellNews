@@ -18,7 +18,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 abstract class CacheModule {
     @Binds
-    abstract fun provideFeedCacheDataSource(
+    abstract fun provideNewsCacheDataSource(
         datasource: DefaultNewsCacheDataSource
     ): NewsCacheDataSource
 

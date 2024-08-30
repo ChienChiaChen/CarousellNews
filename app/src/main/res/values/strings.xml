@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">CarousellNews</string>
+
+
+    <plurals name="year">
+        <item quantity="one">%d year age</item>
+        <item quantity="other">%d years age</item>
+    </plurals>
+
+    <plurals name="day">
+        <item quantity="one">%d day age</item>
+        <item quantity="other">%d days age</item>
+    </plurals>
+
+    <plurals name="weeks">
+        <item quantity="one">%d week age</item>
+        <item quantity="other">%d weeks age</item>
+    </plurals>
+
+    <plurals name="month">
+        <item quantity="one">%d month age</item>
+        <item quantity="other">%d months age</item>
+    </plurals>
+
+    <string name="recent">Recent</string>
+    <string name="popular">Popular</string>
+    <string name="default_error_msg">Something goes wrong</string>
 </resources>

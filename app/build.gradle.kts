@@ -35,17 +35,28 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
     implementation(project(":common"))
+    implementation(project(":network"))
+    implementation(project(":domain"))
+    implementation(project(":presentation"))
+    implementation(project(":preferences"))
+    implementation(project(":data"))
+    implementation(project(":cache"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.swiperefreshlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -56,4 +67,12 @@ dependencies {
     kapt(libs.dagger.hilt.compiler)
 
     implementation(libs.coil)
+
+    implementation(libs.lifecycle.scope)
+    implementation(libs.viewmodel.scope)
+
+    // Room
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    kapt(libs.room.compiler)
 }
