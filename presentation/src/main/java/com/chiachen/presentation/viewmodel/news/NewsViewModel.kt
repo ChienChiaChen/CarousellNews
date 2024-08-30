@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.chiachen.common.utils.DataResult
 import com.chiachen.domain.usecase.GetNewsUseCase
 import com.chiachen.presentation.mapper.NewsDomainPresentationMapper
+import com.chiachen.presentation.model.NewsPresentationModel
 import com.chiachen.presentation.viewmodel.news.NewsContract.NewsEvent.Initialization
 import com.chiachen.presentation.viewmodel.news.NewsContract.NewsEvent.OnSortOptionSelected
 import com.chiachen.presentation.viewmodel.news.NewsContract.NewsEvent.SwipeRefresh
@@ -50,12 +51,11 @@ class NewsViewModel @Inject constructor(
             is OnSortOptionSelected -> {
                 setState {
                     copy(sortType = event.option,
-                        data = data.sortedBy {
-                            if (NewsSortType.RECENT == event.option) {
-                                -it.timeCreated
-                            } else {
-                                it.rank.toLong()
-                            }
+                        data = if (NewsSortType.RECENT == event.option) {
+                            data.sortedBy { -it.timeCreated }
+                        } else {
+                            data.sortedWith(compareBy<NewsPresentationModel> { news -> news.rank }
+                                .thenBy { news -> -news.timeCreated })
                         }
                     )
                 }
@@ -75,8 +75,15 @@ class NewsViewModel @Inject constructor(
                         setState {
                             copy(
                                 showEmptyNews = false,
-                                data = newsDomainPresentationMapper.fromList(result.data)
-                                    .sortedBy { if (NewsSortType.RECENT == this.sortType) -it.timeCreated else it.rank.toLong() },
+                                data = newsDomainPresentationMapper.fromList(result.data).let {
+                                    return@let if (NewsSortType.RECENT == this.sortType) {
+                                        it.sortedBy { -it.timeCreated }
+                                    } else {
+                                        it.sortedWith(compareBy<NewsPresentationModel> { news -> news.rank }
+                                            .thenBy { news -> -news.timeCreated })
+                                    }
+                                },
+
                                 loading = false
                             )
                         }
