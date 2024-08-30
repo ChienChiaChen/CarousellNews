@@ -52,4 +52,13 @@ dependencies {
     implementation(libs.lifecycle.scope)
     implementation(libs.viewmodel.scope)
 
+    //test
+    testImplementation(libs.junit)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.dagger.hilt.test)
+    testImplementation(libs.mock.web.server)
+    testImplementation(libs.runner)
+    testImplementation(libs.turbine)
+
 }
