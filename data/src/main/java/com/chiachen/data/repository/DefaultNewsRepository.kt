@@ -50,6 +50,6 @@ class DefaultNewsRepository @Inject constructor(
     }
 
     companion object {
-        private const val ONE_HOUR = 1000 * 60 * 60
+        private const val ONE_HOUR = 60 * 60
     }
 }
